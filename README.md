@@ -1,22 +1,27 @@
-# Phaser Vite TypeScript Template
+# Phaser Editor Angular Template
 
-This is a Phaser 3 project template that uses Vite for bundling. It supports hot-reloading for quick development workflow, includes TypeScript support and scripts to generate production-ready builds.
-
-**[This Template is also available as a JavaScript version.](https://github.com/phaserjs/template-vite)**
+This is a Phaser Editor v4 project template that uses Bun for bundling. It supports hot-reloading for quick development workflow and includes scripts to generate production-ready builds.
 
 ### Versions
 
 This template has been updated for:
 
-- [Phaser 3.80.1](https://github.com/phaserjs/phaser)
-- [Vite 5.1.4](https://github.com/vitejs/vite)
-- [TypeScript 5.3.3](https://github.com/microsoft/TypeScript)
+- [Phaser {phaser-version}](https://github.com/phaserjs/phaser)
+- Phaser Editor v4.0 and above
 
 ![screenshot](screenshot.png)
+
+## What is Phaser Editor?
+
+Phaser Editor enables you to visually create Phaser games. Instead of entering numbers in your code to position Game Objects, you can drag and drop them into place, tweak their animations, adjust their physics bodies, enable special effects, and more. It's quicker and faster for both artists and developers alike and publishes pure Phaser code.
+
+See more at [phaser.io](https://phaser.io/editor)
 
 ## Requirements
 
 [Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+
+An active subscription to Phaser Editor is required to load and use this template within it.
 
 ## Available Commands
 
@@ -28,66 +33,47 @@ This template has been updated for:
 
 ## Writing Code
 
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm run dev`.
+After cloning the repo, run `npm install` from your project directory.
 
-The local development server runs on `http://localhost:8080` by default. Please see the Vite documentation if you wish to change this, or add SSL support.
-
-Once the server is running you can edit any of the files in the `src` folder. Vite will automatically recompile your code and then reload the browser.
-
-## Template Project Structure
-
-We have provided a default project structure to get you started. This is as follows:
-
-- `index.html` - A basic HTML page to contain the game.
-- `src` - Contains the game source code.
-- `src/main.ts` - The main **entry** point. This contains the game configuration and starts the game.
-- `src/vite-env.d.ts` - Global TypeScript declarations, provide types information.
-- `src/scenes/` - The Phaser Scenes are in this folder.
-- `public/style.css` - Some simple CSS rules to help with page layout.
-- `public/assets` - Contains the static assets used by the game.
-
-## Handling Assets
-
-Vite supports loading assets via JavaScript module `import` statements.
-
-This template provides support for both embedding assets and also loading them from a static folder. To embed an asset, you can import it at the top of the JavaScript file you are using it in:
-
-```js
-import logoImg from './assets/logo.png'
-```
-
-To load static files such as audio files, videos, etc place them into the `public/assets` folder. Then you can use this path in the Loader calls within Phaser:
-
-```js
-preload ()
-{
-    //  This is an example of an imported bundled image.
-    //  Remember to import it at the top of this file
-    this.load.image('logo', logoImg);
-
-    //  This is an example of loading a static image
-    //  from the public/assets folder:
-    this.load.image('background', 'assets/bg.png');
-}
-```
-
-When you issue the `npm run build` command, all static assets are automatically copied to the `dist/assets` folder.
+To start the local development server use `npm run dev`.
 
 ## Deploying to Production
 
-After you run the `npm run build` command, your code will be built into a single bundle and saved to the `dist` folder, along with any other assets your project imported, or stored in the public assets folder.
+To create a production build use the command `npm run build`.
 
-In order to deploy your game, you will need to upload *all* of the contents of the `dist` folder to a public facing web server.
+This will take your game code and build it into a single bundle, ready for deployment. This bundle is saved to the `dist` folder. Please note that some templates save to the `build` folder instead. The deployment script will also copy any assets your project imported, or stored in the public assets folder.
 
-## Customizing the Template
+To deploy your game, upload *all* of the contents of the `dist` folder to a public-facing web server.
 
-### Vite
+**Note:** In some templates, the `dist` folder has been renamed to `build` to remain within that framework's conventions.
 
-If you want to customize your build, such as adding plugin (i.e. for loading CSS or fonts), you can modify the `vite/config.*.mjs` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json`. Please see the [Vite documentation](https://vitejs.dev/) for more information.
+## Phaser Editor considerations
+
+### Excluding files from the project
+
+You don't want to add every file in this template to your Phaser Editor project. For example, the whole of `node_modules` can be excluded.
+
+The `/.skip` file lists the folders and files to exclude from the editor's project.
+
+[Learn more about resource filtering in Phaser Editor](https://phaser.io/editor/docs/misc/resources-filtering)
+
+### Asset Pack
+
+Phaser has the ability to load what are known as 'asset packs'. These are JSON files that describe all of the content that your game needs to load, such as images, audio, and fonts. Phaser Editor will generate and use asset packs intensively and tools such as the Scene Editor depend upon the information stored in the asset pack files.
+
+You can have multiple asset packs per project, which is the recommended practice for larger games, allowing you to load only the pack of assets the game requires at that specific point.
+
+In this template, we have pre-configured two types of asset packs: `boot-asset-pack.json` and `preload-asset-pack.json`.
+
+The `boot-asset-pack.json` file is used to load assets when the game first boots. Typically, you would store a small selection of initial assets in here, such as a loading screen image and progress bar.
+
+The `preload-asset-pack.json` in this template contains the rest of the assets the game needs. You are free to create additional packs as required, but for the sake of simplicity, this template has been configured with just these two packs.
+
+[Learn more about Asset Pack loading in Phaser](https://newdocs.phaser.io/docs/3.80.0/Phaser.Loader.LoaderPlugin#pack)
 
 ## Join the Phaser Community!
 
-We love to see what developers like you create with Phaser! It really motivates us to keep improving. So please join our community and show-off your work 😄
+We love to see what developers like you create with Phaser! It really motivates us to keep improving. So please join our community and show off your work 😄
 
 **Visit:** The [Phaser website](https://phaser.io) and follow on [Phaser Twitter](https://twitter.com/phaser_)<br />
 **Play:** Some of the amazing games [#madewithphaser](https://twitter.com/search?q=%23madewithphaser&src=typed_query&f=live)<br />
