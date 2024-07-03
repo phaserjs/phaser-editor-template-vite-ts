@@ -18,10 +18,10 @@ export default class MainMenu extends Phaser.Scene {
 
 	editorCreate(): void {
 
-		// logo
+		// background
 		this.add.image(512, 384, "background");
 
-		// image_6f965f9c-4e4c-4e9e-8fd4-4bf8d35d145d
+		// logo
 		this.add.image(512, 384, "logo");
 
 		// text

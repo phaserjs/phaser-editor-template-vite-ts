@@ -15,7 +15,7 @@
         {
             "type": "Image",
             "id": "eddaf8e1-94d1-401d-a328-cdfb23d1fef5",
-            "label": "logo",
+            "label": "background",
             "texture": {
                 "key": "background"
             },
@@ -25,7 +25,7 @@
         {
             "type": "Image",
             "id": "e5babb96-c526-40f4-94d3-ce0955d9767d",
-            "label": "image_6f965f9c-4e4c-4e9e-8fd4-4bf8d35d145d",
+            "label": "logo",
             "texture": {
                 "key": "logo"
             },
